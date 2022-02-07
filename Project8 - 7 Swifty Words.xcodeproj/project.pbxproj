@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631BA8D927B1B3B8003ED683 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 631BA8D827B1B3B8003ED683 /* level1.txt */; };
 		6396BB1427ADCE79003905DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6396BB1327ADCE79003905DA /* AppDelegate.swift */; };
 		6396BB1627ADCE79003905DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6396BB1527ADCE79003905DA /* SceneDelegate.swift */; };
 		6396BB1827ADCE79003905DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6396BB1727ADCE79003905DA /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		631BA8D827B1B3B8003ED683 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 		6396BB1027ADCE79003905DA /* Project8 - 7 Swifty Words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project8 - 7 Swifty Words.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6396BB1327ADCE79003905DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6396BB1527ADCE79003905DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				6396BB1C27ADCE7B003905DA /* Assets.xcassets */,
 				6396BB1E27ADCE7B003905DA /* LaunchScreen.storyboard */,
 				6396BB2127ADCE7B003905DA /* Info.plist */,
+				631BA8D827B1B3B8003ED683 /* level1.txt */,
 			);
 			path = "Project8 - 7 Swifty Words";
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6396BB2027ADCE7B003905DA /* LaunchScreen.storyboard in Resources */,
+				631BA8D927B1B3B8003ED683 /* level1.txt in Resources */,
 				6396BB1D27ADCE7B003905DA /* Assets.xcassets in Resources */,
 				6396BB1B27ADCE79003905DA /* Main.storyboard in Resources */,
 			);
