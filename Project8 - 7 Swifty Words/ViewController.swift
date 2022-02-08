@@ -169,7 +169,9 @@ class ViewController: UIViewController {
         guard let answerText = currentAnswer.text else { return }
         
         if let solutionPosition = solutions.firstIndex(of: answerText) {
+            // Increment attempts by 1
             attempts += 1
+            
             activatedButtons.removeAll()
             
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
@@ -191,6 +193,7 @@ class ViewController: UIViewController {
                 present(ac, animated: true, completion: nil)
             }
         } else {
+            // Increment attempts by 1
             attempts += 1
             
             // clearTapped method
