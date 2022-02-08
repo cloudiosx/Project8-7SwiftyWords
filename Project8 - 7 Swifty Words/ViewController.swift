@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         }
     }
     var level = 1
+    var attempts = 0
     
     override func loadView() {
         
@@ -168,6 +169,7 @@ class ViewController: UIViewController {
         guard let answerText = currentAnswer.text else { return }
         
         if let solutionPosition = solutions.firstIndex(of: answerText) {
+            attempts += 1
             activatedButtons.removeAll()
             
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
@@ -177,9 +179,40 @@ class ViewController: UIViewController {
             currentAnswer.text = ""
             score += 1
             
-            if score % 7 == 0 {
+            if attempts == 7 {
+                let ac = UIAlertController(title: "You are out of guesses!", message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Restart", style: .default, handler: restart))
+                present(ac, animated: true, completion: nil)
+            }
+            
+            if score == 7 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
+                present(ac, animated: true, completion: nil)
+            }
+        } else {
+            attempts += 1
+            
+            // clearTapped method
+            currentAnswer.text = ""
+            
+            for btn in activatedButtons {
+                btn.isHidden = false
+            }
+            
+            activatedButtons.removeAll()
+            
+            // Deduct points if the player makes an incorrect guess
+            score -= 1
+            
+            if attempts == 7 {
+                let ac = UIAlertController(title: "You are out of guesses!", message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Restart", style: .default, handler: restart))
+                present(ac, animated: true, completion: nil)
+            } else {
+                // If the user enters an incorrect guess, show an alert telling them they are wrong
+                let ac = UIAlertController(title: "You are wrong!", message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 present(ac, animated: true, completion: nil)
             }
         }
@@ -235,6 +268,19 @@ class ViewController: UIViewController {
     
     func levelUp(action: UIAlertAction) {
         level += 1
+        solutions.removeAll(keepingCapacity: true)
+        
+        loadLevel()
+        
+        for btn in letterButtons {
+            btn.isHidden = false
+        }
+    }
+    
+    func restart(action: UIAlertAction) {
+        score = 0
+        attempts = 0
+        
         solutions.removeAll(keepingCapacity: true)
         
         loadLevel()
