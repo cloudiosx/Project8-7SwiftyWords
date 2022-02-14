@@ -153,7 +153,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        loadLevel()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadLevel()
+        }
     }
     
     // MARK: - Objective-C Methods
@@ -256,15 +258,17 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
-        // Now configure the buttons and labels
-        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
         letterBits.shuffle()
         
-        if letterBits.count == letterButtons.count {
-            for i in 0 ..< letterButtons.count {
-                letterButtons[i].setTitle(letterBits[i], for: .normal)
+        // Now configure the buttons and labels
+        DispatchQueue.main.async {
+            self.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if letterBits.count == self.letterButtons.count {
+                for i in 0 ..< self.letterButtons.count {
+                    self.letterButtons[i].setTitle(letterBits[i], for: .normal)
+                }
             }
         }
     }
@@ -273,8 +277,10 @@ class ViewController: UIViewController {
         level += 1
         solutions.removeAll(keepingCapacity: true)
         
-        loadLevel()
-        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadLevel()
+        }
+
         for btn in letterButtons {
             btn.isHidden = false
         }
@@ -286,7 +292,9 @@ class ViewController: UIViewController {
         
         solutions.removeAll(keepingCapacity: true)
         
-        loadLevel()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadLevel()
+        }
         
         for btn in letterButtons {
             btn.isHidden = false
